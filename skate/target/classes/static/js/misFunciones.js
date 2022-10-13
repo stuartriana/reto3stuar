@@ -1,4 +1,4 @@
-const BASE_URL = 'Http://141.148.186.68:80'
+const BASE_URL = 'Http://141.148.186.68:8080'
 //const BASE_URL = 'Http://localhost:8080'
 function traerInformacionSkate(){
     $.ajax({ 
