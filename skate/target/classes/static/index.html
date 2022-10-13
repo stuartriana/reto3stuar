@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        table, th, td {
+          border:1px solid red;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>    
+    <title>Reto Tres</title>
+</head>
+
+<body>
+    <h1>Alquiler de Patinetas</h1>
+
+    <div>
+    
+    <h1>Categorias</h1>
+
+    <!-- <input type="number" id="idCategory" placeholder="Id de Categoria"> -->
+    <input type="text" id="nameCategory" placeholder="Nombre de Categoria">
+    <input  type="text" id="descriptionCategory" placeholder="Descripcion de Categoria">
+    <br>
+    <button onclick="traerInformacionCategory()"> Consultar</button>
+    <button onclick="guardarInformacionCategory()"> Insertar</button>
+    <div id="resultadoCategory"></div>    
+    </div>
+    
+    <div>
+
+    <h1>Skates</h1>
+
+        <!-- <input type="number" id="idSkate" placeholder="Id de Skate"> -->
+        <input type="text" id="nameSkate" placeholder="Nombre de Skate">
+        <input type="text" id="descriptionSkate" placeholder="Descripcion de Skate">
+        <input type="text" id="brandSkate" placeholder="Marca de Skate">
+        <input type="number" id="yearSkate" placeholder="Año de Skate">
+        <br>
+        <button onclick="traerInformacionSkate()"> Consultar</button>
+        <button onclick="guardarInformacionSkate()"> Insertar</button>
+    </div>
+    <div id="resultadoSkate"></div>
+
+
+    <div>
+    <h1>Clientes</h1>
+
+        <!-- <input type="idClient" id="idClient" placeholder="Id del Cliente"> -->
+        <input type="text" id="email" placeholder="Email del Cliente">
+        <input type="text" id="password" placeholder="Password">
+        <input type="text" id="name" placeholder="Nombre del Cliente">
+        <input type="number" id="age" placeholder="Edad del Cliente">
+        <br>
+        <button onclick="traerInformacionClient()"> Consultar</button>
+        <button onclick="guardarInformacionClient()"> Insertar</button>
+    </div>
+    <div id="resultadoClient"></div>
+
+    <div>
+        <h1>Mensajes</h1>
+
+        <!-- <input type="number" id="idMessage" placeholder="Id del Mensaje"> -->
+        <input type="text" id="messageText" placeholder="Mensaje">
+        <br>
+        <button onclick="traerInformacionMessage()"> Consultar</button>
+        <button onclick="guardarInformacionMessage()"> Insertar</button>
+    </div>
+    <div id="resultadoMessage"></div>
+
+    <div>
+    <h1>Reservacion</h1>
+
+       <!-- <input type="number" id="idReservation" placeholder="Id de la Reservacion">-->
+        <input type="date" id="startDate" placeholder="Fecha de Inicio">
+        <input type="date" id="devolutionDate" placeholder="Fecha de Devolucion">
+        <br>
+        <button onclick="traerInformacionReservation()"> Consultar</button>
+        <button onclick="guardarInformacionReservation()"> Insertar</button>
+    </div>
+    <div id="resultadoReservation"></div>
+
+    <div>
+        <h1>Score</h1>
+
+        <input type="text" id="messageText" placeholder="MessageText">
+        <input type="number" id="stars" placeholder="Stars">
+        <br>  
+        <button onclick="traerInformacionScore()">Consultar</button>
+        <button onclick="guardarInformacionScore()">Insertar</button>
+
+    </div>
+    <div id="resultadoScore"></div>
+
+</body>
+<script type="text/javascript" src="js/misFunciones.js"></script>
+</html>
