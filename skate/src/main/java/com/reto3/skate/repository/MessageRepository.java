@@ -13,6 +13,7 @@ import com.reto3.skate.repository.crud.MessageCrudRepository;
 public class MessageRepository {
     @Autowired
     private MessageCrudRepository messageCrudRepository;
+    
     public List<Message> getMessageAll(){
         return (List<Message>) messageCrudRepository.findAll();        
     }
@@ -21,5 +22,11 @@ public class MessageRepository {
     }
     public Message save(Message message){
         return messageCrudRepository.save(message);
+    }
+    public void delete(Message message){
+        messageCrudRepository.delete(message);
+    } 
+    public void deleteMessage(Message message){
+        messageCrudRepository.delete(message);
     }
 }

@@ -35,4 +35,41 @@ public class SkateServices {
             }
         }
     }
+    public Skate update(Skate skate){
+        if (skate.getId()!= null){
+            Optional<Skate> skate1 = skateRepository.getSkateId(skate.getId());
+            if (!skate1.isEmpty()){
+                if (skate.getName()!= null){
+                    skate1.get().setName(skate.getName());
+                }
+                if (skate.getYear()!=  null){
+                    skate1.get().setYear(skate.getYear());
+                }
+                if (skate.getBrand()!= null){
+                    skate1.get().setBrand(skate.getBrand());
+                }
+                if (skate.getDescription()!= null){
+                    skate1.get().setDescription(skate.getDescription());
+                }
+                if (skate.getCategory()!= null){
+                    skate1.get().setCategory(skate.getCategory());
+                }
+                skateRepository.save(skate1.get());
+                return skate1.get();
+            } else {
+                return skate;
+            }
+        } else {
+            return skate;
+        }
+    }
+    public boolean deleteSkate(Integer skateId) {
+        boolean flag = false;
+        Optional<Skate> skate1 = skateRepository.getSkateId(skateId);
+        if (skate1.isPresent()){
+            skateRepository.deleteSkate(skate1.get());
+            flag = true;
+        }
+        return flag;
+    } 
 }

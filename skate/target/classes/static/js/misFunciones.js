@@ -1,5 +1,5 @@
-const BASE_URL = 'Http://141.148.186.68:8080'
-//const BASE_URL = 'Http://localhost:8080'
+//const BASE_URL = 'Http://141.148.186.68:8080'
+const BASE_URL = 'Http://localhost:8080'
 function traerInformacionSkate(){
     $.ajax({ 
                 url:BASE_URL + "/api/Skate/all",
@@ -29,10 +29,10 @@ function pintarRespuestaSkate(items){
        myTable+="<td>"+items[i].category.name +"</td>";                
        myTable+="<td>"+items[i].category.description +"</td>";                
        myTable+="<td>"+items[i].message +"</td>";                        
-       myTable+="<td>"+items[i].reservation+"</td>";                
+       myTable+="<td>"+items[i].reservation+"</td>"; */               
        myTable+="<td><button onclick='borrarElemento("+items[i].id+")'>Borrar</button>";
        myTable+="<td><button onclick='borrarSkate("+items[i].id+")'>Borrar</button>";
-       myTable+="<td><button onclick='actualizarSkate("+items[i].id+")'>Actualizar</button>";  */         
+       myTable+="<td><button onclick='actualizarSkate("+items[i].id+")'>Actualizar</button>";           
        myTable+="</tr>";
    }
    myTable +="</table>";
@@ -90,6 +90,44 @@ function guardarInformacionCategoria(){
         }
     );
 }
+function actualizarCategory(idElemento){
+
+    $("#resultadoCategory").empty();
+
+    let myData ={id:idElemento, name:$("#nameCategory").val(),description:$("#descriptionCategory").val()}
+    let dataToSend = JSON.stringify(myData);
+
+    $.ajax ({
+            url: BASE_URL + '/api/Category/update',
+            type: 'PUT',
+            data: dataToSend,
+            datatype: "JSON",
+            contentType: 'application/json',
+            success:function(respuesta){
+            alert("Actualizacion exitosa");
+            },
+            error:function(xhr,status){
+            alert('Operacion no satisfactoria,'+ xhr.status );
+            }
+        }
+    );
+}
+function borrarCategory(idElemento){
+    
+    $.ajax ({
+            url: BASE_URL + '/api/Category/' + idElemento,
+            type: 'DELETE',
+            datatype: "JSON",
+            success: function(respuesta){
+            // console.log(respuesta);
+            alert("Borrado exitoso");
+            },
+            error:function(xhr,status){                                
+            alert('Operacion no satisfactoria,'+ xhr.status );
+            }
+        }
+    );
+}
 function traerInformacionCategory(){
     $.ajax(
               {
@@ -119,6 +157,8 @@ function pintarRespuestaCategory(items){
        myTable+="<td>"+ items[i].id+ "</td>";
        myTable+="<td>"+ items[i].name+"</td>";
        myTable+="<td>"+ items[i].description+"</td>";
+       myTable+="<td><button onclick='borrarCategory("+items[i].id+")'>Borrar</button>";
+       myTable+="<td><button onclick='actualizarCategory("+items[i].id+")'>Actualizar</button>";
        myTable+="</tr>";
    }
    myTable +="</table>";

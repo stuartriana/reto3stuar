@@ -32,4 +32,29 @@ public class MessageServices {
             }
         }
     }
+    public Message updateMessage(Message message){
+        if (message.getIdMessage()!= null){
+            Optional<Message> message1 = messageRepository.getMessageId(message.getIdMessage());
+            if (!message1.isEmpty()){
+                if (message.getMessageText()!= null){
+                    message1.get().setMessageText(message.getMessageText());
+                }
+                messageRepository.save(message1.get());
+                return message1.get();
+            } else{
+                return message;
+            }
+        } else{
+            return message;
+        }
+    }
+    public boolean delete(Integer messageId){
+        boolean flag = false;
+        Optional<Message> message1 = messageRepository.getMessageId(messageId);
+        if (message1.isPresent()){
+            messageRepository.delete(message1.get());
+            flag = true;
+        }
+        return flag;
+    }
 }
