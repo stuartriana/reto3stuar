@@ -1,5 +1,6 @@
 package com.reto3.skate.repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,5 +25,13 @@ public class ReservationRepository {
     public Reservation save(Reservation reservation){
         return reservationCrudRepository.save(reservation);
     }
-    
+    public List<Reservation> ReservationStatus(String status){
+        return reservationCrudRepository.findAllByStatus(status);
+    }
+    public List<Reservation> ReservationTiempo(Date fechaInicial, Date fechaFinal){
+        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore (fechaInicial, fechaFinal);
+    }
+    public List<Object[]> reporteClientes(){
+        return reservationCrudRepository.reporteClientes();
+    }
 }

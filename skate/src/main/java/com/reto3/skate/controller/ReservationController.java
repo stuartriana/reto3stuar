@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reto3.skate.model.Reservation;
+import com.reto3.skate.reportes.ContadorClientes;
+import com.reto3.skate.reportes.StatusReservas;
 import com.reto3.skate.services.ReservationServices;
 
 @RestController
@@ -39,6 +41,19 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation reservation){
         return reservationServices.save(reservation);
+    }
+    @GetMapping("/report-status")
+    public StatusReservas getStatusReservas(){
+        return reservationServices.ReservationStatus();
+    }
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservasTiempo(@PathVariable("dateOne")
+            String fechaInicial, @PathVariable("dateTwo") String fechaFinal){
+                return reservationServices.ReservationTiempo(fechaInicial, fechaFinal);
+        }
+    @GetMapping("/report-clients")
+    public List<ContadorClientes> getClientes(){
+        return reservationServices.reporteClientes();
     }
 
 }
